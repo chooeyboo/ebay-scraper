@@ -1,0 +1,60 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Package Tracker App</title>
+</head>
+<body>
+  <h1>Package Tracker App</h1>
+
+  <form id="trackingForm">
+    <label for="trackingNumber">Tracking Number:</label>
+    <input type="text" id="trackingNumber" name="trackingNumber" required>
+    
+    <label for="carrier">Carrier:</label>
+    <select id="carrier" name="carrier" required>
+      <option value="UPS">UPS</option>
+      <option value="USPS">USPS</option>
+      <option value="FedEx">FedEx</option>
+    </select>
+
+    <button type="button" onclick="trackPackage()">Track Package</button>
+  </form>
+
+  <ul id="packageList"></ul>
+
+  <div id="trackingDetails"></div>
+
+  <script>
+    async function trackPackage() {
+      const trackingNumber = document.getElementById('trackingNumber').value;
+      const carrier = document.getElementById('carrier').value;
+
+      const response = await fetch('/track', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          trackingNumber,
+          carrier,
+        }),
+      });
+
+      const html = await response.text();
+
+      // Add the tracking information to the package list
+      const packageList = document.getElementById('packageList');
+      const listItem = document.createElement('li');
+      listItem.textContent = `Tracking ${trackingNumber} via ${carrier}`;
+      packageList.appendChild(listItem);
+
+      // Display the tracking details HTML content
+      const trackingDetails = document.getElementById('trackingDetails');
+      trackingDetails.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
