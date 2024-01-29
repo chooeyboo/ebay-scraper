@@ -6,10 +6,8 @@ Group: Minasha Gunarathna and Chris Wang
 
 ## How to Run
 
-Make sure you have the following dependencies installed:
+Dependencies:
+Node.js with the following packages:
+express, body-parser, node-fetch, cheerio, esm
 
-`requests`: To make HTTP requests
-
-`bs4` (Beautiful Soup): For web scraping and parsing HTML content
-
-In the terminal, run `python3 packageTracker.py`.
+Open a terminal in the directory of the downloaded files and run `npm start`.
