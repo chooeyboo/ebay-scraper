@@ -19,11 +19,12 @@ def scraper(url):
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
     }
 
-    print("Downloading %s"%url)
+    print("Downloading product information from %s"%url)
     req = requests.get(url, headers=headers)
     if req.status_code > 500:
-        print("Page was blocked by eBay. :(")
+        print("Cannot get page. :(")
         return None
+    print("Scraping complete for item. Results in result.jsonl")
     return eBay.extract(req.text)
 
 with open("urls.txt",'r') as urls, open('result.jsonl','w') as outfile:
