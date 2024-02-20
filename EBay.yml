@@ -1,0 +1,24 @@
+ProductName:
+    css: 'h1.x-item-title__mainTitle span.ux-textspans'
+    xpath: null
+    type: Text
+Price:
+    css: 'div.x-price-primary span.ux-textspans'
+    xpath: null
+    type: Text
+Reviews:
+    css: 'ul.x-sellercard-atf__data-item-wrapper li:nth-of-type(1) span.ux-textspans'
+    xpath: null
+    type: Text
+Shipping:
+    css: 'div.ux-labels-values.ux-labels-values--shipping div.ux-labels-values__values'
+    xpath: null
+    type: Text
+Delivery:
+    css: 'div.ux-labels-values-with-hints div.vim div.ux-labels-values__values-content > div'
+    xpath: null
+    type: Text
+Returns:
+    css: 'div.vim.x-returns-minview div.ux-labels-values__values-content div'
+    xpath: null
+    type: Text
